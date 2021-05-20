@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		67351A40265679E400F1AE38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A3F265679E400F1AE38 /* AppDelegate.swift */; };
 		67351A42265679E400F1AE38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A41265679E400F1AE38 /* SceneDelegate.swift */; };
-		67351A44265679E400F1AE38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A43265679E400F1AE38 /* ViewController.swift */; };
-		67351A47265679E400F1AE38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67351A45265679E400F1AE38 /* Main.storyboard */; };
 		67351A4A265679E400F1AE38 /* pomodoro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 67351A48265679E400F1AE38 /* pomodoro.xcdatamodeld */; };
 		67351A4C265679F700F1AE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67351A4B265679F700F1AE38 /* Assets.xcassets */; };
 		67351A4F265679F700F1AE38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67351A4D265679F700F1AE38 /* LaunchScreen.storyboard */; };
 		67351A5A265679F800F1AE38 /* pomodoroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A59265679F800F1AE38 /* pomodoroTests.swift */; };
+		67351A6726567E5800F1AE38 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A6626567E5800F1AE38 /* TimerController.swift */; };
+		67351A6A2656814E00F1AE38 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A692656814E00F1AE38 /* Color.swift */; };
+		67351A6D2656833A00F1AE38 /* UIView Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A6C2656833A00F1AE38 /* UIView Extensions.swift */; };
+		67351A6F26568D9E00F1AE38 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A6E26568D9E00F1AE38 /* TimerViewModel.swift */; };
+		67351A71265696EC00F1AE38 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A70265696EC00F1AE38 /* TimerManager.swift */; };
+		67351A732656A89300F1AE38 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A722656A89300F1AE38 /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +35,6 @@
 		67351A3C265679E400F1AE38 /* pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67351A3F265679E400F1AE38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67351A41265679E400F1AE38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		67351A43265679E400F1AE38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		67351A46265679E400F1AE38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		67351A49265679E400F1AE38 /* pomodoro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pomodoro.xcdatamodel; sourceTree = "<group>"; };
 		67351A4B265679F700F1AE38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67351A4E265679F700F1AE38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +42,12 @@
 		67351A55265679F800F1AE38 /* pomodoroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pomodoroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67351A59265679F800F1AE38 /* pomodoroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pomodoroTests.swift; sourceTree = "<group>"; };
 		67351A5B265679F800F1AE38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67351A6626567E5800F1AE38 /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
+		67351A692656814E00F1AE38 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		67351A6C2656833A00F1AE38 /* UIView Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView Extensions.swift"; sourceTree = "<group>"; };
+		67351A6E26568D9E00F1AE38 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		67351A70265696EC00F1AE38 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		67351A722656A89300F1AE38 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +91,9 @@
 			children = (
 				67351A3F265679E400F1AE38 /* AppDelegate.swift */,
 				67351A41265679E400F1AE38 /* SceneDelegate.swift */,
-				67351A43265679E400F1AE38 /* ViewController.swift */,
-				67351A45265679E400F1AE38 /* Main.storyboard */,
-				67351A4B265679F700F1AE38 /* Assets.xcassets */,
-				67351A4D265679F700F1AE38 /* LaunchScreen.storyboard */,
 				67351A50265679F700F1AE38 /* Info.plist */,
-				67351A48265679E400F1AE38 /* pomodoro.xcdatamodeld */,
+				67351A6526567E0700F1AE38 /* Timer */,
+				67351A6426567DFD00F1AE38 /* Resources */,
 			);
 			path = pomodoro;
 			sourceTree = "<group>";
@@ -100,6 +105,45 @@
 				67351A5B265679F800F1AE38 /* Info.plist */,
 			);
 			path = pomodoroTests;
+			sourceTree = "<group>";
+		};
+		67351A6426567DFD00F1AE38 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				67351A6B2656827300F1AE38 /* Extensions */,
+				67351A682656813E00F1AE38 /* Data */,
+				67351A4B265679F700F1AE38 /* Assets.xcassets */,
+				67351A4D265679F700F1AE38 /* LaunchScreen.storyboard */,
+				67351A48265679E400F1AE38 /* pomodoro.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		67351A6526567E0700F1AE38 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				67351A6626567E5800F1AE38 /* TimerController.swift */,
+				67351A722656A89300F1AE38 /* TimerView.swift */,
+				67351A6E26568D9E00F1AE38 /* TimerViewModel.swift */,
+				67351A70265696EC00F1AE38 /* TimerManager.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		67351A682656813E00F1AE38 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				67351A692656814E00F1AE38 /* Color.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		67351A6B2656827300F1AE38 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				67351A6C2656833A00F1AE38 /* UIView Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +229,6 @@
 			files = (
 				67351A4F265679F700F1AE38 /* LaunchScreen.storyboard in Resources */,
 				67351A4C265679F700F1AE38 /* Assets.xcassets in Resources */,
-				67351A47265679E400F1AE38 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,8 +246,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67351A732656A89300F1AE38 /* TimerView.swift in Sources */,
+				67351A6F26568D9E00F1AE38 /* TimerViewModel.swift in Sources */,
+				67351A71265696EC00F1AE38 /* TimerManager.swift in Sources */,
 				67351A4A265679E400F1AE38 /* pomodoro.xcdatamodeld in Sources */,
-				67351A44265679E400F1AE38 /* ViewController.swift in Sources */,
+				67351A6D2656833A00F1AE38 /* UIView Extensions.swift in Sources */,
+				67351A6A2656814E00F1AE38 /* Color.swift in Sources */,
+				67351A6726567E5800F1AE38 /* TimerController.swift in Sources */,
 				67351A40265679E400F1AE38 /* AppDelegate.swift in Sources */,
 				67351A42265679E400F1AE38 /* SceneDelegate.swift in Sources */,
 			);
@@ -229,14 +277,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		67351A45265679E400F1AE38 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				67351A46265679E400F1AE38 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		67351A4D265679F700F1AE38 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
