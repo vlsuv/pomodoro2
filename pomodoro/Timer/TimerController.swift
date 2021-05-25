@@ -12,7 +12,7 @@ import RxSwift
 class TimerController: UIViewController {
     
     // MARK: - Properties
-    var viewModel: TimerViewModelType = TimerViewModel()
+    var viewModel: TimerViewModelType?
     
     private var contentView: TimerView!
     
@@ -30,11 +30,11 @@ class TimerController: UIViewController {
     
     // MARK: - Targets
     @objc private func didTapTimerButton() {
-        viewModel.inputs.didTapTimerButton()
+        viewModel?.inputs.didTapTimerButton()
     }
     
     @objc private func didTapStopTimerButton() {
-        viewModel.inputs.didTapStopTimerButton()
+        viewModel?.inputs.didTapStopTimerButton()
     }
     
     // MARK: - Handlers
@@ -49,7 +49,7 @@ class TimerController: UIViewController {
     }
     
     private func setupBindings() {
-        viewModel.outputs.timerState
+        viewModel?.outputs.timerState
             .asDriver()
             .drive(onNext: { [weak self] timerState in
                 
@@ -64,7 +64,7 @@ class TimerController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.outputs.currentTime
+        viewModel?.outputs.currentTime
             .asDriver()
             .drive(onNext: { [weak self] time in
                 

@@ -38,6 +38,8 @@ class TimerViewModel: TimerViewModelType, TimerViewModelInputs, TimerViewModelOu
     var currentTime: BehaviorRelay<String> = .init(value: "25:00")
     var timerState: BehaviorRelay<TimerState> = .init(value: .stop)
     
+    var coordinator: TimerCoordinator?
+    
     init() {
         setupTimerManager()
     }
