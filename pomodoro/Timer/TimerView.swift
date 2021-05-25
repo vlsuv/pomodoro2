@@ -32,6 +32,16 @@ class TimerView: UIView {
         return button
     }()
     
+    var stopTimerButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = Color.black
+        let normalAttributedString = NSAttributedString(string: "Stop", attributes: [
+            NSAttributedString.Key.foregroundColor: Color.white,
+        ])
+        button.setAttributedTitle(normalAttributedString, for: .normal)
+        return button
+    }()
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,10 +65,16 @@ class TimerView: UIView {
                            leftPadding: 18,
                            rightPadding: 18,
                            height: 45)
+        
+        stopTimerButton.anchor(top: timerButton.bottomAnchor,
+                               left: timerButton.leftAnchor,
+                               right: timerButton.rightAnchor,
+                               topPadding: 10,
+                               height: 45)
     }
     
     private func addSubviews() {
-        [timeLabel, timerButton]
+        [timeLabel, timerButton, stopTimerButton]
             .forEach { addSubview($0) }
     }
 }

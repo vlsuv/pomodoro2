@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class TimerController: UIViewController {
     
@@ -15,6 +16,8 @@ class TimerController: UIViewController {
     
     private var contentView: TimerView!
     
+    private let disposeBag = DisposeBag()
+    
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,30 +25,16 @@ class TimerController: UIViewController {
         
         setupContentView()
         setupTargets()
-        
-        viewModel.didChangeTimerState = { [weak self] state in
-            guard let self = self else { return }
-            
-            switch state {
-            case .start:
-                self.contentView.timerButton.isSelected = true
-            case .pause:
-                self.contentView.timerButton.isSelected = false
-            case .stop:
-                self.contentView.timerButton.isSelected = false
-            }
-        }
-        
-        viewModel.didChangeTime = { [weak self] time in
-            guard let self = self else { return }
-            
-            self.contentView.timeLabel.text = time
-        }
+        setupBindings()
     }
     
     // MARK: - Targets
     @objc private func didTapTimerButton() {
-        viewModel.didTapTimerButton()
+        viewModel.inputs.didTapTimerButton()
+    }
+    
+    @objc private func didTapStopTimerButton() {
+        viewModel.inputs.didTapStopTimerButton()
     }
     
     // MARK: - Handlers
@@ -56,5 +45,31 @@ class TimerController: UIViewController {
     
     private func setupTargets() {
         contentView.timerButton.addTarget(self, action: #selector(didTapTimerButton), for: .touchUpInside)
+        contentView.stopTimerButton.addTarget(self, action: #selector(didTapStopTimerButton), for: .touchUpInside)
+    }
+    
+    private func setupBindings() {
+        viewModel.outputs.timerState
+            .asDriver()
+            .drive(onNext: { [weak self] timerState in
+                
+                switch timerState {
+                case .start:
+                    self?.contentView.timerButton.isSelected = true
+                case .pause:
+                    self?.contentView.timerButton.isSelected = false
+                case .stop:
+                    self?.contentView.timerButton.isSelected = false
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.currentTime
+            .asDriver()
+            .drive(onNext: { [weak self] time in
+                
+                self?.contentView.timeLabel.text = time
+            })
+            .disposed(by: disposeBag)
     }
 }

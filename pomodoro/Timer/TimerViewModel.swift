@@ -7,21 +7,36 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-protocol TimerViewModelType {
+protocol TimerViewModelInputs {
     func didTapTimerButton()
-    
-    var didChangeTime: ((String) -> ())? { get set }
-    var didChangeTimerState: ((TimerState) -> ())? { get set }
+    func didTapStopTimerButton()
 }
 
-class TimerViewModel: TimerViewModelType {
+protocol TimerViewModelOutputs {
+    var currentTime: BehaviorRelay<String> { get }
+    var timerState: BehaviorRelay<TimerState> { get }
+}
+
+protocol TimerViewModelType {
+    var inputs: TimerViewModelInputs { get }
+    var outputs: TimerViewModelOutputs { get }
+}
+
+class TimerViewModel: TimerViewModelType, TimerViewModelInputs, TimerViewModelOutputs {
     
     // MARK: - Properties
+    var inputs: TimerViewModelInputs { return self }
+    var outputs: TimerViewModelOutputs { return self }
+    
     private var timerManager: TimerManagerProtocol!
     
-    var didChangeTime: ((String) -> ())?
-    var didChangeTimerState: ((TimerState) -> ())?
+    private let disposeBag = DisposeBag()
+    
+    var currentTime: BehaviorRelay<String> = .init(value: "25:00")
+    var timerState: BehaviorRelay<TimerState> = .init(value: .stop)
     
     init() {
         setupTimerManager()
@@ -33,18 +48,30 @@ class TimerViewModel: TimerViewModelType {
         timerManager.delegate = self
     }
     
+    // MARK: - Input Handlers
     func didTapTimerButton() {
         timerManager.changeState()
+    }
+    
+    func didTapStopTimerButton() {
+        timerManager.stopTimer()
     }
 }
 
 // MARK: - TimerManagerDelegate
 extension TimerViewModel: TimerManagerDelegate {
     func didChangeTimerState(to state: TimerState) {
-        didChangeTimerState?(state)
+        timerState.accept(state)
     }
     
     func didChangeTime(to time: TimeInterval) {
-        didChangeTime?(String(time))
+        currentTime.accept(toStringTime(time))
+    }
+}
+
+// MARK: - Helpers
+extension TimerViewModel {
+    private func toStringTime(_ time: Double) -> String {
+        return String(time)
     }
 }

@@ -33,7 +33,7 @@ class TimerManager: TimerManagerProtocol {
     private var timer: Timer?
     private var endDate: Date?
     private var secondsLeft: TimeInterval = 100 {
-        didSet(newValue) {
+        willSet(newValue) {
             delegate?.didChangeTime(to: newValue)
         }
     }
@@ -58,9 +58,9 @@ class TimerManager: TimerManagerProtocol {
     
     func stopTimer() {
         timer?.invalidate()
+        secondsLeft = 100
         timer = nil
         endDate = nil
-        secondsLeft = 100
         
         delegate?.didChangeTimerState(to: .stop)
     }
