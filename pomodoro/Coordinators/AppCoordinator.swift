@@ -10,12 +10,12 @@ import UIKit
 
 protocol Coordinator: class {
     var childCoordinators: [Coordinator] { get }
-    func didFinishChildCoordinator()
+    func childDidFinish(_ childCoordinator: Coordinator)
     func start()
 }
 
 extension Coordinator {
-    func didFinishChildCoordinator() {}
+    func childDidFinish(_ childCoordinator: Coordinator) {}
 }
 
 class AppCoordinator: Coordinator {

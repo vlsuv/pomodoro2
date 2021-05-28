@@ -26,6 +26,7 @@ class TimerController: UIViewController {
         setupContentView()
         setupTargets()
         setupBindings()
+        configureNavigationController()
     }
     
     // MARK: - Targets
@@ -37,7 +38,16 @@ class TimerController: UIViewController {
         viewModel?.inputs.didTapStopTimerButton()
     }
     
+    @objc private func didTapTaskListButton() {
+        viewModel?.inputs.didTapTaskListButton()
+    }
+    
     // MARK: - Handlers
+    private func configureNavigationController() {
+        let taskListButton = UIBarButtonItem(title: "Tasks", style: .plain, target: self, action: #selector(didTapTaskListButton))
+        navigationItem.rightBarButtonItem = taskListButton
+    }
+    
     private func setupContentView() {
         contentView = TimerView(frame: view.bounds)
         view.addSubview(contentView)

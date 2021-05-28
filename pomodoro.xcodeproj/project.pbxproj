@@ -22,6 +22,10 @@
 		67351A732656A89300F1AE38 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A722656A89300F1AE38 /* TimerView.swift */; };
 		67ACB8BF265D083200283FFB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8BE265D083200283FFB /* AppCoordinator.swift */; };
 		67ACB8C1265D0A6500283FFB /* TimerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */; };
+		67ACB8C5265D0CC000283FFB /* TaskListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C4265D0CC000283FFB /* TaskListController.swift */; };
+		67ACB8C7265D13AB00283FFB /* TaskListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C6265D13AB00283FFB /* TaskListCoordinator.swift */; };
+		67ACB8C9265D143700283FFB /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C8265D143700283FFB /* TaskListViewModel.swift */; };
+		67FEE5DB265D335A00A9BBC3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FEE5DA265D335A00A9BBC3 /* Task.swift */; };
 		EEC962CD48536D0D722B6816 /* Pods_pomodoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83AEF173181C30DD0660310 /* Pods_pomodoro.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +60,10 @@
 		67351A722656A89300F1AE38 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		67ACB8BE265D083200283FFB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCoordinator.swift; sourceTree = "<group>"; };
+		67ACB8C4265D0CC000283FFB /* TaskListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListController.swift; sourceTree = "<group>"; };
+		67ACB8C6265D13AB00283FFB /* TaskListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCoordinator.swift; sourceTree = "<group>"; };
+		67ACB8C8265D143700283FFB /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		67FEE5DA265D335A00A9BBC3 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A5428C2433340ABB0B6BAB85 /* Pods-pomodoroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoroTests.release.xcconfig"; path = "Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6E242C5AF38A6A3821379E3 /* Pods-pomodoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoro.debug.xcconfig"; path = "Target Support Files/Pods-pomodoro/Pods-pomodoro.debug.xcconfig"; sourceTree = "<group>"; };
 		D4D9DE78642BC855C2F62AB7 /* Pods-pomodoroTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoroTests.debug.xcconfig"; path = "Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,8 +116,10 @@
 				67351A3F265679E400F1AE38 /* AppDelegate.swift */,
 				67351A41265679E400F1AE38 /* SceneDelegate.swift */,
 				67351A50265679F700F1AE38 /* Info.plist */,
+				67ACB8C2265D0C5500283FFB /* Models */,
 				67ACB8BD265D081000283FFB /* Coordinators */,
 				67351A6526567E0700F1AE38 /* Timer */,
+				67ACB8C3265D0CA400283FFB /* TaskList */,
 				67351A6426567DFD00F1AE38 /* Resources */,
 			);
 			path = pomodoro;
@@ -169,8 +179,26 @@
 			children = (
 				67ACB8BE265D083200283FFB /* AppCoordinator.swift */,
 				67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */,
+				67ACB8C6265D13AB00283FFB /* TaskListCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		67ACB8C2265D0C5500283FFB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				67FEE5DA265D335A00A9BBC3 /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		67ACB8C3265D0CA400283FFB /* TaskList */ = {
+			isa = PBXGroup;
+			children = (
+				67ACB8C4265D0CC000283FFB /* TaskListController.swift */,
+				67ACB8C8265D143700283FFB /* TaskListViewModel.swift */,
+			);
+			path = TaskList;
 			sourceTree = "<group>";
 		};
 		67DD177B265BFAB100952BEB /* Managers */ = {
@@ -368,10 +396,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				67351A732656A89300F1AE38 /* TimerView.swift in Sources */,
+				67ACB8C7265D13AB00283FFB /* TaskListCoordinator.swift in Sources */,
 				67351A6F26568D9E00F1AE38 /* TimerViewModel.swift in Sources */,
+				67ACB8C5265D0CC000283FFB /* TaskListController.swift in Sources */,
 				67ACB8C1265D0A6500283FFB /* TimerCoordinator.swift in Sources */,
 				67ACB8BF265D083200283FFB /* AppCoordinator.swift in Sources */,
 				67351A71265696EC00F1AE38 /* TimerManager.swift in Sources */,
+				67FEE5DB265D335A00A9BBC3 /* Task.swift in Sources */,
+				67ACB8C9265D143700283FFB /* TaskListViewModel.swift in Sources */,
 				67351A4A265679E400F1AE38 /* pomodoro.xcdatamodeld in Sources */,
 				67351A6D2656833A00F1AE38 /* UIView Extensions.swift in Sources */,
 				67351A6A2656814E00F1AE38 /* Color.swift in Sources */,

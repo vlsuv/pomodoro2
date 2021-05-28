@@ -13,6 +13,7 @@ import RxCocoa
 protocol TimerViewModelInputs {
     func didTapTimerButton()
     func didTapStopTimerButton()
+    func didTapTaskListButton()
 }
 
 protocol TimerViewModelOutputs {
@@ -57,6 +58,10 @@ class TimerViewModel: TimerViewModelType, TimerViewModelInputs, TimerViewModelOu
     
     func didTapStopTimerButton() {
         timerManager.stopTimer()
+    }
+    
+    func didTapTaskListButton() {
+        coordinator?.showTaskList()
     }
 }
 

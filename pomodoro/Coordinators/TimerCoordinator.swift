@@ -28,4 +28,20 @@ class TimerCoordinator: Coordinator {
         
         navigationController.viewControllers = [timerController]
     }
+    
+    // MARK: - Handlers
+    func childDidFinish(_ childCoordinator: Coordinator) {
+        guard let index = childCoordinators.firstIndex(where: { $0 === childCoordinator }) else { return }
+        
+        childCoordinators.remove(at: index)
+    }
+    
+    func showTaskList() {
+        let taskListCoordinator = TaskListCoordinator(navigationController: navigationController)
+        
+        taskListCoordinator.parentCoordinator = self
+        childCoordinators.append(taskListCoordinator)
+        
+        taskListCoordinator.start()
+    }
 }
