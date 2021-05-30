@@ -40,4 +40,19 @@ class TaskListCoordinator: Coordinator {
     func viewWillDisappear() {
         parentCoordinator?.childDidFinish(self)
     }
+    
+    func childDidFinish(_ childCoordinator: Coordinator) {
+        guard let index = childCoordinators.firstIndex(where: { $0 === childCoordinator }) else { return }
+        
+        childCoordinators.remove(at: index)
+    }
+    
+    func showNewTask() {
+        let newTaskCoordinator = NewTaskCoordinator(navigationController: navigationController)
+        
+        newTaskCoordinator.parentCoordinator = self
+        childCoordinators.append(newTaskCoordinator)
+        
+        newTaskCoordinator.start()
+    }
 }

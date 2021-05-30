@@ -12,6 +12,7 @@ import RxDataSources
 struct Task {
     var id: UUID
     var name: String
+    var description: String
 }
 
 extension Task: IdentifiableType, Equatable {

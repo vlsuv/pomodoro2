@@ -11,24 +11,6 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-struct TaskListSection {
-    var header: String
-    var items: [Item]
-}
-
-extension TaskListSection: AnimatableSectionModelType {
-    typealias Item = Task
-    
-    var identity: String {
-        return header
-    }
-    
-    init(original: TaskListSection, items: [Item]) {
-        self = original
-        self.items = items
-    }
-}
-
 protocol TaskListViewModelInputs {
     func viewWillDisappear()
     func didTapAddTaskButton()
@@ -54,7 +36,7 @@ class TaskListViewModel: TaskListViewModelType, TaskListViewModelInputs, TaskLis
     
     weak var coordinator: TaskListCoordinator?
 
-    var data: Driver<[Task]> = .just([Task(id: UUID(), name: "Task1"), Task(id: UUID(), name: "Task2")])
+    var data: Driver<[Task]> = .just([Task(id: UUID(), name: "Task1", description: "task1 dscr"), Task(id: UUID(), name: "Task2", description: "task2 dscr")])
 
     // MARK: - Init
     init() {
@@ -70,7 +52,7 @@ class TaskListViewModel: TaskListViewModelType, TaskListViewModelInputs, TaskLis
     }
     
     func didTapAddTaskButton() {
-        print("add task")
+        coordinator?.showNewTask()
     }
     
     func didTapDeleteTaskButton(atIndexPath indexPath: IndexPath) {
