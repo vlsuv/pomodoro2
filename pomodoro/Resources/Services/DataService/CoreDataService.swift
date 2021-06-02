@@ -16,10 +16,21 @@ enum CoreDataServiceError: Error {
     case otherError
 }
 
-class CoreDataService {
+protocol CoreDataServiceProtocol {
+    func fetchData<T>(request: NSFetchRequest<NSFetchRequestResult>) -> Observable<T>
+    func observeChangeDataInContext<T>(request: NSFetchRequest<NSFetchRequestResult>) -> Observable<T>
+    func delete<T: NSManagedObject>(_ entity: T) -> Completable
+}
+
+final class CoreDataService: CoreDataServiceProtocol {
     
-    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-    
+    // MARK: - Properties
+    private var context: NSManagedObjectContext? {
+        return (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    }
+}
+
+extension CoreDataService {
     func fetchData<T>(request: NSFetchRequest<NSFetchRequestResult>) -> Observable<T> {
         return Single<T>.create { [weak self] single -> Disposable in
             do {

@@ -8,22 +8,41 @@
 
 import Foundation
 import RxSwift
+import CoreData
 
-class CoreDataManager {
+protocol CoreDataManagerProtocol {
+    func fetchAllTasks() -> Observable<[Task]>
+    func observeChangeDataForTasks() -> Observable<[Task]>
+    func addNewTask(name: String, description: String, workInterval: Int) -> Completable
+    func delete(task: Task) -> Completable
+}
+
+class CoreDataManager: CoreDataManagerProtocol {
     
     // MARK: - Properties
-    private let disposeBag = DisposeBag()
+    private var context: NSManagedObjectContext? {
+        return (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    }
     
-    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    private let coreDataService: CoreDataServiceProtocol
     
-    private let dataService = CoreDataService()
+    private let disposeBag: DisposeBag
     
+    // MARK: - Init
+    init() {
+        self.disposeBag = DisposeBag()
+        self.coreDataService = CoreDataService()
+    }
+}
+
+// MARK: - Task Manage
+extension CoreDataManager {
     func fetchAllTasks() -> Observable<[Task]> {
-        return dataService.fetchData(request: Task.fetchRequest())
+        return coreDataService.fetchData(request: Task.fetchRequest())
     }
     
     func observeChangeDataForTasks() -> Observable<[Task]> {
-        return dataService.observeChangeDataInContext(request: Task.fetchRequest())
+        return coreDataService.observeChangeDataInContext(request: Task.fetchRequest())
     }
     
     func addNewTask(name: String, description: String, workInterval: Int) -> Completable {
@@ -51,6 +70,6 @@ class CoreDataManager {
     }
     
     func delete(task: Task) -> Completable {
-        return dataService.delete(task)
+        return coreDataService.delete(task)
     }
 }
