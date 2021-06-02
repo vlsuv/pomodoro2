@@ -18,7 +18,8 @@ protocol NewTaskViewModelInputs {
 
 protocol NewTaskViewModelOutputs {
     func dataSource() -> RxTableViewSectionedReloadDataSource<NewTaskSectionModel>
-    var sections: [NewTaskSectionModel] { get set }
+    var sections: [NewTaskSectionModel]! { get set }
+    var isValid: BehaviorSubject<Bool> { get set }
 }
 
 protocol NewTaskViewModelType {
@@ -34,17 +35,30 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
     
     weak var coordinator: NewTaskCoordinator?
     
+    private let coreDataManager: CoreDataManager
+    
     private let disposeBag = DisposeBag()
     
-    var sections: [NewTaskSectionModel] = [NewTaskSectionModel]()
+    var sections: [NewTaskSectionModel]!
     
-    var taskName: BehaviorSubject<String> = .init(value: "")
-    var taskDescription: BehaviorSubject<String> = .init(value: "")
-    var workInterval: BehaviorSubject<Int> = .init(value: 25)
+    private let taskName: BehaviorSubject<String>
+    private let taskDescription: BehaviorSubject<String>
+    private let workInterval: BehaviorSubject<Int>
+    
+    var isValid: BehaviorSubject<Bool>
     
     // MARK: - Init
     init() {
+        coreDataManager = CoreDataManager()
+        
+        taskName = .init(value: "")
+        taskDescription = .init(value: "")
+        workInterval = .init(value: 25)
+        
+        isValid = .init(value: false)
+        
         setupSections()
+        setupBindings()
     }
     
     deinit {
@@ -63,12 +77,32 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
         ]
     }
     
+    private func setupBindings() {
+        taskName.map { text -> Bool in
+            return !text.isEmpty
+        }
+        .bind(to: isValid)
+        .disposed(by: disposeBag)
+    }
+    
     // MARK: - Input Handlers
     func viewDidDisappear() {
         coordinator?.viewDidDisappear()
     }
     
     func didTapDoneButton() {
+        guard let name = try? taskName.value(), let description = try? taskDescription.value(), let workInterval = try? workInterval.value() else { return }
+        
+        coreDataManager.addNewTask(name: name, description: description, workInterval: workInterval)
+            .subscribe { [weak self] completable in
+                switch completable {
+                case .error(let error):
+                    print("add task error: \(error)")
+                case .completed:
+                    self?.coordinator?.didFinishCreatingTask()
+                }
+        }
+        .disposed(by: disposeBag)
     }
     
     func didTapCancelButton() {

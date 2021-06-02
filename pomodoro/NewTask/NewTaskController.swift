@@ -73,8 +73,12 @@ class NewTaskController: UIViewController {
     
     private func setupBindings() {
         Observable.just(viewModel.outputs.sections)
-        .bind(to: tableView.rx.items(dataSource: dataSource))
-        .disposed(by: disposeBag)
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.isValid
+            .bind(to: doneButton.rx.isEnabled)
+            .disposed(by: disposeBag)
         
         doneButton.rx.tap
             .asObservable()
@@ -87,6 +91,13 @@ class NewTaskController: UIViewController {
             .asObservable()
             .subscribe { [weak self] _ in
                 self?.viewModel?.inputs.didTapCancelButton()
+        }
+        .disposed(by: disposeBag)
+        
+        doneButton.rx.tap
+            .asObservable()
+            .subscribe { [weak self] _ in
+                self?.viewModel.inputs.didTapDoneButton()
         }
         .disposed(by: disposeBag)
     }

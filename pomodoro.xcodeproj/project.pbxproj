@@ -22,6 +22,9 @@
 		67351A6F26568D9E00F1AE38 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A6E26568D9E00F1AE38 /* TimerViewModel.swift */; };
 		67351A71265696EC00F1AE38 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A70265696EC00F1AE38 /* TimerManager.swift */; };
 		67351A732656A89300F1AE38 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A722656A89300F1AE38 /* TimerView.swift */; };
+		673BB7582664E31E007495D0 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB7562664E31E007495D0 /* Task+CoreDataClass.swift */; };
+		673BB7592664E31E007495D0 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB7572664E31E007495D0 /* Task+CoreDataProperties.swift */; };
+		673BB75B2664E74E007495D0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB75A2664E74E007495D0 /* CoreDataManager.swift */; };
 		67ACB8BF265D083200283FFB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8BE265D083200283FFB /* AppCoordinator.swift */; };
 		67ACB8C1265D0A6500283FFB /* TimerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */; };
 		67ACB8C5265D0CC000283FFB /* TaskListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C4265D0CC000283FFB /* TaskListController.swift */; };
@@ -32,7 +35,7 @@
 		67B318D826611E770099D215 /* NewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318D726611E770099D215 /* NewTaskViewModel.swift */; };
 		67B318DA26612DA40099D215 /* NewTaskTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318D926612DA40099D215 /* NewTaskTextFieldCell.swift */; };
 		67B318DC26614B6F0099D215 /* NewTaskTimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318DB26614B6E0099D215 /* NewTaskTimePickerCell.swift */; };
-		67FEE5DB265D335A00A9BBC3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FEE5DA265D335A00A9BBC3 /* Task.swift */; };
+		67C403432664D1FD005C1867 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C403422664D1FD005C1867 /* CoreDataService.swift */; };
 		EEC962CD48536D0D722B6816 /* Pods_pomodoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83AEF173181C30DD0660310 /* Pods_pomodoro.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,9 @@
 		67351A6E26568D9E00F1AE38 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		67351A70265696EC00F1AE38 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		67351A722656A89300F1AE38 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		673BB7562664E31E007495D0 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		673BB7572664E31E007495D0 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		673BB75A2664E74E007495D0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		67ACB8BE265D083200283FFB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCoordinator.swift; sourceTree = "<group>"; };
 		67ACB8C4265D0CC000283FFB /* TaskListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListController.swift; sourceTree = "<group>"; };
@@ -77,7 +83,7 @@
 		67B318D726611E770099D215 /* NewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewModel.swift; sourceTree = "<group>"; };
 		67B318D926612DA40099D215 /* NewTaskTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTextFieldCell.swift; sourceTree = "<group>"; };
 		67B318DB26614B6E0099D215 /* NewTaskTimePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTimePickerCell.swift; sourceTree = "<group>"; };
-		67FEE5DA265D335A00A9BBC3 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		67C403422664D1FD005C1867 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		A5428C2433340ABB0B6BAB85 /* Pods-pomodoroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoroTests.release.xcconfig"; path = "Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6E242C5AF38A6A3821379E3 /* Pods-pomodoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoro.debug.xcconfig"; path = "Target Support Files/Pods-pomodoro/Pods-pomodoro.debug.xcconfig"; sourceTree = "<group>"; };
 		D4D9DE78642BC855C2F62AB7 /* Pods-pomodoroTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoroTests.debug.xcconfig"; path = "Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 		67351A6426567DFD00F1AE38 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				67C403402664CFA5005C1867 /* Services */,
 				67DD177B265BFAB100952BEB /* Managers */,
 				67351A6B2656827300F1AE38 /* Extensions */,
 				67351A682656813E00F1AE38 /* Data */,
@@ -203,7 +210,8 @@
 		67ACB8C2265D0C5500283FFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				67FEE5DA265D335A00A9BBC3 /* Task.swift */,
+				673BB7562664E31E007495D0 /* Task+CoreDataClass.swift */,
+				673BB7572664E31E007495D0 /* Task+CoreDataProperties.swift */,
 				6730DE8E2663B6AA00A6B989 /* NewTaskSectionModel.swift */,
 				6730DE902663B72100A6B989 /* TaskListSectionModel.swift */,
 			);
@@ -228,6 +236,23 @@
 				67B318DB26614B6E0099D215 /* NewTaskTimePickerCell.swift */,
 			);
 			path = NewTask;
+			sourceTree = "<group>";
+		};
+		67C403402664CFA5005C1867 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				67C403412664CFB0005C1867 /* DataService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		67C403412664CFB0005C1867 /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+				67C403422664D1FD005C1867 /* CoreDataService.swift */,
+				673BB75A2664E74E007495D0 /* CoreDataManager.swift */,
+			);
+			path = DataService;
 			sourceTree = "<group>";
 		};
 		67DD177B265BFAB100952BEB /* Managers */ = {
@@ -429,22 +454,25 @@
 				67B318DA26612DA40099D215 /* NewTaskTextFieldCell.swift in Sources */,
 				67ACB8C7265D13AB00283FFB /* TaskListCoordinator.swift in Sources */,
 				6730DE8F2663B6AA00A6B989 /* NewTaskSectionModel.swift in Sources */,
+				67C403432664D1FD005C1867 /* CoreDataService.swift in Sources */,
 				67351A6F26568D9E00F1AE38 /* TimerViewModel.swift in Sources */,
 				67B318D326611CAD0099D215 /* NewTaskController.swift in Sources */,
 				67ACB8C5265D0CC000283FFB /* TaskListController.swift in Sources */,
 				67ACB8C1265D0A6500283FFB /* TimerCoordinator.swift in Sources */,
+				673BB75B2664E74E007495D0 /* CoreDataManager.swift in Sources */,
 				67ACB8BF265D083200283FFB /* AppCoordinator.swift in Sources */,
+				673BB7582664E31E007495D0 /* Task+CoreDataClass.swift in Sources */,
 				67B318D626611E0D0099D215 /* NewTaskCoordinator.swift in Sources */,
 				67B318D826611E770099D215 /* NewTaskViewModel.swift in Sources */,
 				6730DE912663B72100A6B989 /* TaskListSectionModel.swift in Sources */,
 				67351A71265696EC00F1AE38 /* TimerManager.swift in Sources */,
-				67FEE5DB265D335A00A9BBC3 /* Task.swift in Sources */,
 				67ACB8C9265D143700283FFB /* TaskListViewModel.swift in Sources */,
 				67351A4A265679E400F1AE38 /* pomodoro.xcdatamodeld in Sources */,
 				67351A6D2656833A00F1AE38 /* UIView Extensions.swift in Sources */,
 				67351A6A2656814E00F1AE38 /* Color.swift in Sources */,
 				67351A6726567E5800F1AE38 /* TimerController.swift in Sources */,
 				67351A40265679E400F1AE38 /* AppDelegate.swift in Sources */,
+				673BB7592664E31E007495D0 /* Task+CoreDataProperties.swift in Sources */,
 				67351A42265679E400F1AE38 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

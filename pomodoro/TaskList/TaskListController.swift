@@ -18,19 +18,19 @@ class TaskListController: UIViewController {
     
     private var tableView: UITableView = UITableView()
     
-    var dataSource: RxTableViewSectionedAnimatedDataSource<TaskListSection>!
+    private var dataSource: RxTableViewSectionedAnimatedDataSource<TaskListSection>!
     
-    var addTaskButton: UIBarButtonItem = {
+    private var addTaskButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "Add", style: .plain, target: nil, action: nil)
         return button
     }()
     
-    var editButton: UIBarButtonItem = {
+    private var editButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "Edit", style: .plain, target: nil, action: nil)
         return button
     }()
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -70,6 +70,11 @@ class TaskListController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        tableView.rx.modelDeleted(Task.self)
+            .subscribe { model in
+                
+        }.disposed(by: disposeBag)
+        
         tableView.rx.itemMoved
             .asObservable()
             .subscribe(onNext: { [weak self] sourceIndex, destinationIndex in
@@ -82,25 +87,21 @@ class TaskListController: UIViewController {
     }
     
     private func setupBindings() {
-        viewModel?.outputs.data
-            .map { [TaskListSection(header: "", items: $0)] }
+        viewModel?.outputs.sections
+            .asDriver()
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
+            
         editButton.rx.tap
             .asObservable().subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                
-                self.tableView.isEditing.toggle()
+                self?.tableView.isEditing.toggle()
             })
             .disposed(by: disposeBag)
         
         addTaskButton.rx.tap
             .asObservable()
             .subscribe { [weak self] _ in
-                guard let self = self else { return }
-                
-                self.viewModel?.inputs.didTapAddTaskButton()
+                self?.viewModel?.inputs.didTapAddTaskButton()
         }
         .disposed(by: disposeBag)
     }

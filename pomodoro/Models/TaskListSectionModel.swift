@@ -8,6 +8,7 @@
 
 import Foundation
 import RxDataSources
+import CoreData
 
 struct TaskListSection {
     var header: String
@@ -16,11 +17,11 @@ struct TaskListSection {
 
 extension TaskListSection: AnimatableSectionModelType {
     typealias Item = Task
-    
+
     var identity: String {
         return header
     }
-    
+
     init(original: TaskListSection, items: [Item]) {
         self = original
         self.items = items
