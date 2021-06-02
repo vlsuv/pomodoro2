@@ -16,8 +16,14 @@ extension Task {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Task> {
         return NSFetchRequest<Task>(entityName: "Task")
     }
+    
+    static var request: NSFetchRequest<Task> {
+        let entityName = String(describing: Task.self)
+        let request = NSFetchRequest<Task>(entityName: entityName)
+        return request
+    }
 
-    @NSManaged public var discription: String?
+    @NSManaged public var taskDescription: String?
     @NSManaged public var id: UUID
     @NSManaged public var name: String
     @NSManaged public var workInterval: Int16

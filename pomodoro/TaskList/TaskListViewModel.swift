@@ -37,7 +37,7 @@ class TaskListViewModel: TaskListViewModelType, TaskListViewModelInputs, TaskLis
     
     weak var coordinator: TaskListCoordinator?
     
-    private let coreDataManager: CoreDataManager
+    private let coreDataManager: CoreDataManagerProtocol
 
     var data: BehaviorRelay<[Task]> = .init(value: [Task]())
     var sections: BehaviorRelay<[TaskListSection]> = .init(value: [TaskListSection]())

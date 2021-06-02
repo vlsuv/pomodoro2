@@ -38,11 +38,11 @@ class CoreDataManager: CoreDataManagerProtocol {
 // MARK: - Task Manage
 extension CoreDataManager {
     func fetchAllTasks() -> Observable<[Task]> {
-        return coreDataService.fetchData(request: Task.fetchRequest())
+        return coreDataService.fetchData(request: Task.request)
     }
     
     func observeChangeDataForTasks() -> Observable<[Task]> {
-        return coreDataService.observeChangeDataInContext(request: Task.fetchRequest())
+        return coreDataService.observeChangeDataInContext(request: Task.request)
     }
     
     func addNewTask(name: String, description: String, workInterval: Int) -> Completable {
@@ -55,7 +55,7 @@ extension CoreDataManager {
             let item = Task(context: context)
             item.id = UUID()
             item.name = name
-            item.discription = description
+            item.taskDescription = description
             item.workInterval = Int16(workInterval)
             
             do {

@@ -35,9 +35,9 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
     
     weak var coordinator: NewTaskCoordinator?
     
-    private let coreDataManager: CoreDataManager
+    private let coreDataManager: CoreDataManagerProtocol
     
-    private let disposeBag = DisposeBag()
+    private let disposeBag: DisposeBag
     
     var sections: [NewTaskSectionModel]!
     
@@ -50,6 +50,8 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
     // MARK: - Init
     init() {
         coreDataManager = CoreDataManager()
+        
+        disposeBag = DisposeBag()
         
         taskName = .init(value: "")
         taskDescription = .init(value: "")

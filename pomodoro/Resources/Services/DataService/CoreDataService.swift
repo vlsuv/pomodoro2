@@ -17,8 +17,8 @@ enum CoreDataServiceError: Error {
 }
 
 protocol CoreDataServiceProtocol {
-    func fetchData<T>(request: NSFetchRequest<NSFetchRequestResult>) -> Observable<T>
-    func observeChangeDataInContext<T>(request: NSFetchRequest<NSFetchRequestResult>) -> Observable<T>
+    func fetchData<T: NSFetchRequestResult>(request: NSFetchRequest<T>) -> Observable<[T]>
+    func observeChangeDataInContext<T: NSFetchRequestResult>(request: NSFetchRequest<T>) -> Observable<[T]>
     func delete<T: NSManagedObject>(_ entity: T) -> Completable
 }
 
@@ -31,11 +31,11 @@ final class CoreDataService: CoreDataServiceProtocol {
 }
 
 extension CoreDataService {
-    func fetchData<T>(request: NSFetchRequest<NSFetchRequestResult>) -> Observable<T> {
-        return Single<T>.create { [weak self] single -> Disposable in
+    func fetchData<T: NSFetchRequestResult>(request: NSFetchRequest<T>) -> Observable<[T]> {
+        return Single<[T]>.create { [weak self] single -> Disposable in
             do {
-                let data = try self?.context?.fetch(request) as! T
-                single(.success(data))
+                let data = try self?.context?.fetch(request)
+                single(.success(data!))
             } catch {
                 single(.failure(CoreDataServiceError.failedToFetchData))
             }
@@ -44,10 +44,10 @@ extension CoreDataService {
         .asObservable()
     }
     
-    func observeChangeDataInContext<T>(request: NSFetchRequest<NSFetchRequestResult>) -> Observable<T> {
+    func observeChangeDataInContext<T: NSFetchRequestResult>(request: NSFetchRequest<T>) -> Observable<[T]> {
         let notification = Notification.Name.NSManagedObjectContextObjectsDidChange
         
-        return NotificationCenter.default.rx.notification(notification).flatMap { [weak self] notification -> Observable<T> in
+        return NotificationCenter.default.rx.notification(notification).flatMap { [weak self] notification -> Observable<[T]> in
             guard let self = self else { return .error(CoreDataServiceError.otherError)}
             
             return self.fetchData(request: request).asObservable()
