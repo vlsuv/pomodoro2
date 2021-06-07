@@ -18,9 +18,9 @@ class TaskListController: UIViewController {
     
     private var tableView: UITableView = UITableView()
     
-    private var dataSource: RxTableViewSectionedAnimatedDataSource<TaskListSection>!
+    var dataSource: RxTableViewSectionedAnimatedDataSource<TaskListSection>!
     
-    private var addTaskButton: UIBarButtonItem = {
+    var addTaskButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "Add", style: .plain, target: nil, action: nil)
         return button
     }()

@@ -24,7 +24,7 @@ protocol TaskListViewModelOutputs {
     func dataSource() -> RxTableViewSectionedAnimatedDataSource<TaskListSection> 
 }
 
-protocol TaskListViewModelType {
+protocol TaskListViewModelType: class {
     var inputs: TaskListViewModelInputs { get }
     var outputs: TaskListViewModelOutputs { get }
 }

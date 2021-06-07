@@ -13,6 +13,7 @@ target 'pomodoro' do
   target 'pomodoroTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxBlocking'
   end
 
 end

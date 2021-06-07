@@ -25,6 +25,7 @@
 		673BB7582664E31E007495D0 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB7562664E31E007495D0 /* Task+CoreDataClass.swift */; };
 		673BB7592664E31E007495D0 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB7572664E31E007495D0 /* Task+CoreDataProperties.swift */; };
 		673BB75B2664E74E007495D0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB75A2664E74E007495D0 /* CoreDataManager.swift */; };
+		67857DB5266A22BC00D67D4B /* TimerManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67857DB4266A22BC00D67D4B /* TimerManagerTest.swift */; };
 		67ACB8BF265D083200283FFB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8BE265D083200283FFB /* AppCoordinator.swift */; };
 		67ACB8C1265D0A6500283FFB /* TimerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */; };
 		67ACB8C5265D0CC000283FFB /* TaskListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C4265D0CC000283FFB /* TaskListController.swift */; };
@@ -36,6 +37,8 @@
 		67B318DA26612DA40099D215 /* NewTaskTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318D926612DA40099D215 /* NewTaskTextFieldCell.swift */; };
 		67B318DC26614B6F0099D215 /* NewTaskTimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318DB26614B6E0099D215 /* NewTaskTimePickerCell.swift */; };
 		67C403432664D1FD005C1867 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C403422664D1FD005C1867 /* CoreDataService.swift */; };
+		67EC769C2668CD7B00A3F16B /* TimerViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EC769B2668CD7B00A3F16B /* TimerViewModelTest.swift */; };
+		67EC76A22668EE0A00A3F16B /* TimerControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EC76A12668EE0A00A3F16B /* TimerControllerTest.swift */; };
 		EEC962CD48536D0D722B6816 /* Pods_pomodoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83AEF173181C30DD0660310 /* Pods_pomodoro.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,7 @@
 		673BB7562664E31E007495D0 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		673BB7572664E31E007495D0 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		673BB75A2664E74E007495D0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		67857DB4266A22BC00D67D4B /* TimerManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerTest.swift; sourceTree = "<group>"; };
 		67ACB8BE265D083200283FFB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCoordinator.swift; sourceTree = "<group>"; };
 		67ACB8C4265D0CC000283FFB /* TaskListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListController.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 		67B318D926612DA40099D215 /* NewTaskTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTextFieldCell.swift; sourceTree = "<group>"; };
 		67B318DB26614B6E0099D215 /* NewTaskTimePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTimePickerCell.swift; sourceTree = "<group>"; };
 		67C403422664D1FD005C1867 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		67EC769B2668CD7B00A3F16B /* TimerViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModelTest.swift; sourceTree = "<group>"; };
+		67EC76A12668EE0A00A3F16B /* TimerControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControllerTest.swift; sourceTree = "<group>"; };
 		A5428C2433340ABB0B6BAB85 /* Pods-pomodoroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoroTests.release.xcconfig"; path = "Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6E242C5AF38A6A3821379E3 /* Pods-pomodoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoro.debug.xcconfig"; path = "Target Support Files/Pods-pomodoro/Pods-pomodoro.debug.xcconfig"; sourceTree = "<group>"; };
 		D4D9DE78642BC855C2F62AB7 /* Pods-pomodoroTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoroTests.debug.xcconfig"; path = "Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +155,8 @@
 		67351A58265679F800F1AE38 /* pomodoroTests */ = {
 			isa = PBXGroup;
 			children = (
+				67EC76982668CD4800A3F16B /* TimerTests */,
+				67EC76972668CD0C00A3F16B /* DataService */,
 				67351A59265679F800F1AE38 /* pomodoroTests.swift */,
 				67351A5B265679F800F1AE38 /* Info.plist */,
 			);
@@ -262,6 +270,23 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		67EC76972668CD0C00A3F16B /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataService;
+			sourceTree = "<group>";
+		};
+		67EC76982668CD4800A3F16B /* TimerTests */ = {
+			isa = PBXGroup;
+			children = (
+				67EC769B2668CD7B00A3F16B /* TimerViewModelTest.swift */,
+				67EC76A12668EE0A00A3F16B /* TimerControllerTest.swift */,
+				67857DB4266A22BC00D67D4B /* TimerManagerTest.swift */,
+			);
+			path = TimerTests;
+			sourceTree = "<group>";
+		};
 		6DC6332DE75BAC9A8FA7D87E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +337,7 @@
 				67351A51265679F800F1AE38 /* Sources */,
 				67351A52265679F800F1AE38 /* Frameworks */,
 				67351A53265679F800F1AE38 /* Resources */,
+				B8DF32DFE9DE9177864D1274 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -420,6 +446,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pomodoro/Pods-pomodoro-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B8DF32DFE9DE9177864D1274 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D7DACF4E125A4AF62ED59EC6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -481,7 +524,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EC769C2668CD7B00A3F16B /* TimerViewModelTest.swift in Sources */,
+				67857DB5266A22BC00D67D4B /* TimerManagerTest.swift in Sources */,
 				67351A5A265679F800F1AE38 /* pomodoroTests.swift in Sources */,
+				67EC76A22668EE0A00A3F16B /* TimerControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

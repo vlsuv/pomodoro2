@@ -30,9 +30,9 @@ class TimerManager: TimerManagerProtocol {
     // MARK: - Properties
     var delegate: TimerManagerDelegate?
     
-    private var timer: Timer?
-    private var endDate: Date?
-    private var secondsLeft: TimeInterval = 100 {
+    var timer: Timer?
+    var endDate: Date?
+    var secondsLeft: TimeInterval = 100 {
         willSet(newValue) {
             delegate?.didChangeTime(to: newValue)
         }

@@ -14,7 +14,7 @@ class TimerController: UIViewController {
     // MARK: - Properties
     var viewModel: TimerViewModelType?
     
-    private var contentView: TimerView!
+    var contentView: TimerView!
     
     private let disposeBag = DisposeBag()
     

@@ -32,7 +32,7 @@ class TimerViewModel: TimerViewModelType, TimerViewModelInputs, TimerViewModelOu
     var inputs: TimerViewModelInputs { return self }
     var outputs: TimerViewModelOutputs { return self }
     
-    private var timerManager: TimerManagerProtocol!
+    var timerManager: TimerManagerProtocol!
     
     private let disposeBag = DisposeBag()
     
