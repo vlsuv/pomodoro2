@@ -48,14 +48,6 @@ class TimerManagerTest: XCTestCase {
         XCTAssertNotNil(sut!.endDate)
         
         XCTAssertTrue(mockViewModel!.timerState == .start)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            guard let self = self else {
-                XCTFail()
-                return
-            }
-            XCTAssertTrue(self.mockViewModel!.changeTimerCall)
-        }
     }
     
     func testWhenTwoTapChangeStateTimerPause() {

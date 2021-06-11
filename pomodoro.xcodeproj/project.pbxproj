@@ -37,6 +37,12 @@
 		67B318DA26612DA40099D215 /* NewTaskTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318D926612DA40099D215 /* NewTaskTextFieldCell.swift */; };
 		67B318DC26614B6F0099D215 /* NewTaskTimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318DB26614B6E0099D215 /* NewTaskTimePickerCell.swift */; };
 		67C403432664D1FD005C1867 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C403422664D1FD005C1867 /* CoreDataService.swift */; };
+		67DEDA85267360BB00575FC7 /* TimerCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEDA84267360BB00575FC7 /* TimerCoordinatorTest.swift */; };
+		67DEDA8726736A8A00575FC7 /* TaskListCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEDA8626736A8A00575FC7 /* TaskListCoordinatorTest.swift */; };
+		67DEDA8A26736FA900575FC7 /* MockChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEDA8926736FA900575FC7 /* MockChildCoordinator.swift */; };
+		67DEDA8C26736FF700575FC7 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEDA8B26736FF700575FC7 /* MockNavigationController.swift */; };
+		67DEDA8E2673778900575FC7 /* NewTaskCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEDA8D2673778800575FC7 /* NewTaskCoordinatorTest.swift */; };
+		67DEDA9026737B9D00575FC7 /* SpyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEDA8F26737B9D00575FC7 /* SpyCoordinator.swift */; };
 		67EC769C2668CD7B00A3F16B /* TimerViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EC769B2668CD7B00A3F16B /* TimerViewModelTest.swift */; };
 		67EC76A22668EE0A00A3F16B /* TimerControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EC76A12668EE0A00A3F16B /* TimerControllerTest.swift */; };
 		EEC962CD48536D0D722B6816 /* Pods_pomodoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83AEF173181C30DD0660310 /* Pods_pomodoro.framework */; };
@@ -88,6 +94,12 @@
 		67B318D926612DA40099D215 /* NewTaskTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTextFieldCell.swift; sourceTree = "<group>"; };
 		67B318DB26614B6E0099D215 /* NewTaskTimePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTimePickerCell.swift; sourceTree = "<group>"; };
 		67C403422664D1FD005C1867 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		67DEDA84267360BB00575FC7 /* TimerCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCoordinatorTest.swift; sourceTree = "<group>"; };
+		67DEDA8626736A8A00575FC7 /* TaskListCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCoordinatorTest.swift; sourceTree = "<group>"; };
+		67DEDA8926736FA900575FC7 /* MockChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChildCoordinator.swift; sourceTree = "<group>"; };
+		67DEDA8B26736FF700575FC7 /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
+		67DEDA8D2673778800575FC7 /* NewTaskCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskCoordinatorTest.swift; sourceTree = "<group>"; };
+		67DEDA8F26737B9D00575FC7 /* SpyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyCoordinator.swift; sourceTree = "<group>"; };
 		67EC769B2668CD7B00A3F16B /* TimerViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModelTest.swift; sourceTree = "<group>"; };
 		67EC76A12668EE0A00A3F16B /* TimerControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControllerTest.swift; sourceTree = "<group>"; };
 		A5428C2433340ABB0B6BAB85 /* Pods-pomodoroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoroTests.release.xcconfig"; path = "Target Support Files/Pods-pomodoroTests/Pods-pomodoroTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +167,7 @@
 		67351A58265679F800F1AE38 /* pomodoroTests */ = {
 			isa = PBXGroup;
 			children = (
+				67DEDA8126735FDB00575FC7 /* Coordinators */,
 				67EC76982668CD4800A3F16B /* TimerTests */,
 				67EC76972668CD0C00A3F16B /* DataService */,
 				67351A59265679F800F1AE38 /* pomodoroTests.swift */,
@@ -268,6 +281,27 @@
 			children = (
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		67DEDA8126735FDB00575FC7 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				67DEDA8F26737B9D00575FC7 /* SpyCoordinator.swift */,
+				67DEDA8826736F8600575FC7 /* Mocks */,
+				67DEDA84267360BB00575FC7 /* TimerCoordinatorTest.swift */,
+				67DEDA8626736A8A00575FC7 /* TaskListCoordinatorTest.swift */,
+				67DEDA8D2673778800575FC7 /* NewTaskCoordinatorTest.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		67DEDA8826736F8600575FC7 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				67DEDA8926736FA900575FC7 /* MockChildCoordinator.swift */,
+				67DEDA8B26736FF700575FC7 /* MockNavigationController.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		67EC76972668CD0C00A3F16B /* DataService */ = {
@@ -525,9 +559,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				67EC769C2668CD7B00A3F16B /* TimerViewModelTest.swift in Sources */,
+				67DEDA85267360BB00575FC7 /* TimerCoordinatorTest.swift in Sources */,
+				67DEDA8E2673778900575FC7 /* NewTaskCoordinatorTest.swift in Sources */,
 				67857DB5266A22BC00D67D4B /* TimerManagerTest.swift in Sources */,
+				67DEDA8726736A8A00575FC7 /* TaskListCoordinatorTest.swift in Sources */,
 				67351A5A265679F800F1AE38 /* pomodoroTests.swift in Sources */,
+				67DEDA8A26736FA900575FC7 /* MockChildCoordinator.swift in Sources */,
+				67DEDA9026737B9D00575FC7 /* SpyCoordinator.swift in Sources */,
 				67EC76A22668EE0A00A3F16B /* TimerControllerTest.swift in Sources */,
+				67DEDA8C26736FF700575FC7 /* MockNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

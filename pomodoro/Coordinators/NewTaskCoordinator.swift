@@ -11,9 +11,9 @@ import UIKit
 class NewTaskCoordinator: Coordinator {
     
     // MARK: - Properties
-    private(set) var childCoordinators: [Coordinator] = [Coordinator]()
+    var childCoordinators: [Coordinator] = [Coordinator]()
     
-    private let navigationController: UINavigationController
+    let navigationController: UINavigationController
     
     var modalNavigationController: UINavigationController?
     

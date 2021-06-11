@@ -10,9 +10,9 @@ import UIKit
 
 class TimerCoordinator: Coordinator {
     // MARK: - Properties
-    private(set) var childCoordinators: [Coordinator] = [Coordinator]()
+    var childCoordinators: [Coordinator] = [Coordinator]()
     
-    private let navigationController: UINavigationController
+    let navigationController: UINavigationController
     
     // MARK: - Init
     init(navigationController: UINavigationController) {
