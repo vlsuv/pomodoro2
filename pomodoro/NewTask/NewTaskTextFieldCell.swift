@@ -35,7 +35,7 @@ class NewTaskTextFieldCell: UITableViewCell {
     
     func configure(placeholderText: String, text: String) {
         Observable.just(placeholderText)
-            .bind(to: textField.rx.placeholder )
+            .bind(to: textField.rx.text )
             .disposed(by: disposeBag)
         
         Observable.just(text)

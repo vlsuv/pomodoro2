@@ -10,7 +10,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
-import CoreData
+import RxRealm
+import RealmSwift
+
 
 protocol TaskListViewModelInputs {
     func viewWillDisappear()
@@ -30,40 +32,29 @@ protocol TaskListViewModelType: class {
 }
 
 class TaskListViewModel: TaskListViewModelType, TaskListViewModelInputs, TaskListViewModelOutputs {
-    
     // MARK: - Properties
     var inputs: TaskListViewModelInputs { return self }
     var outputs: TaskListViewModelOutputs { return self }
     
     weak var coordinator: TaskListCoordinator?
     
-    private let coreDataManager: CoreDataManagerProtocol
-
-    var data: BehaviorRelay<[Task]> = .init(value: [Task]())
-    var sections: BehaviorRelay<[TaskListSection]> = .init(value: [TaskListSection]())
+    private var taskManager: TaskDataManagerType {
+        return TaskDataManager.shared
+    }
 
     private let disposeBag: DisposeBag
+    
+    var sections: BehaviorRelay<[TaskListSection]> = .init(value: [TaskListSection]())
     
     // MARK: - Init
     init() {
         disposeBag = DisposeBag()
         
-        coreDataManager = CoreDataManager()
-        
-        coreDataManager.fetchAllTasks().bind(to: data).disposed(by: disposeBag)
-        data.map{ [TaskListSection(header: "", items: $0)] }.bind(to: sections).disposed(by: disposeBag)
-        
-        bindDataWhenUpdateContext()
+        taskManager.fetchObserveTasks().map { [TaskListSection(header: "", items: $0)] }.bind(to: sections).disposed(by: disposeBag)
     }
     
     deinit {
         print("deinit: \(self)")
-    }
-    
-    private func bindDataWhenUpdateContext() {
-        coreDataManager.observeChangeDataForTasks()
-            .bind(to: data)
-            .disposed(by: disposeBag)
     }
     
     // MARK: - Input Handlers
@@ -76,22 +67,27 @@ class TaskListViewModel: TaskListViewModelType, TaskListViewModelInputs, TaskLis
     }
     
     func didTapDeleteTaskButton(atIndexPath indexPath: IndexPath) {
-        
-        let task = data.value[indexPath.row]
-        
-        coreDataManager.delete(task: task).subscribe { completable in
+        taskManager.deleteTask(atIndex: indexPath.row).subscribe { completable in
             switch completable {
             case .error(let error):
-                print("delete error: \(error)")
+                print(error)
             case .completed:
-                print("task deleted")
+                print("Task deleted")
             }
         }
         .disposed(by: disposeBag)
     }
     
     func didMovedTask(sourceIndex: IndexPath, destinationIndex: IndexPath) {
-        print("moved task from \(sourceIndex) to \(destinationIndex)")
+        taskManager.movedTask(sourceIndex: sourceIndex.row, destinationIndex: destinationIndex.row).subscribe { completable in
+            switch completable {
+            case .error(let error):
+                print(error)
+            case .completed:
+                print("Task moved")
+            }
+        }
+        .disposed(by: disposeBag)
     }
 }
 

@@ -35,7 +35,9 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
     
     weak var coordinator: NewTaskCoordinator?
     
-    private let coreDataManager: CoreDataManagerProtocol
+    private var taskDataManager: TaskDataManagerType {
+        return TaskDataManager.shared
+    }
     
     private let disposeBag: DisposeBag
     
@@ -49,8 +51,6 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
     
     // MARK: - Init
     init() {
-        coreDataManager = CoreDataManager()
-        
         disposeBag = DisposeBag()
         
         taskName = .init(value: "")
@@ -95,16 +95,15 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
     func didTapDoneButton() {
         guard let name = try? taskName.value(), let description = try? taskDescription.value(), let workInterval = try? workInterval.value() else { return }
         
-        coreDataManager.addNewTask(name: name, description: description, workInterval: workInterval)
-            .subscribe { [weak self] completable in
+        taskDataManager
+            .addTask(name: name, description: description, workInterval: workInterval).subscribe { [weak self] completable in
                 switch completable {
                 case .error(let error):
-                    print("add task error: \(error)")
+                    print(error)
                 case .completed:
                     self?.coordinator?.didFinishCreatingTask()
                 }
-        }
-        .disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
     }
     
     func didTapCancelButton() {

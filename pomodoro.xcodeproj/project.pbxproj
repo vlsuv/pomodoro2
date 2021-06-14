@@ -12,7 +12,6 @@
 		6730DE912663B72100A6B989 /* TaskListSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6730DE902663B72100A6B989 /* TaskListSectionModel.swift */; };
 		67351A40265679E400F1AE38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A3F265679E400F1AE38 /* AppDelegate.swift */; };
 		67351A42265679E400F1AE38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A41265679E400F1AE38 /* SceneDelegate.swift */; };
-		67351A4A265679E400F1AE38 /* pomodoro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 67351A48265679E400F1AE38 /* pomodoro.xcdatamodeld */; };
 		67351A4C265679F700F1AE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67351A4B265679F700F1AE38 /* Assets.xcassets */; };
 		67351A4F265679F700F1AE38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67351A4D265679F700F1AE38 /* LaunchScreen.storyboard */; };
 		67351A5A265679F800F1AE38 /* pomodoroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A59265679F800F1AE38 /* pomodoroTests.swift */; };
@@ -22,9 +21,9 @@
 		67351A6F26568D9E00F1AE38 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A6E26568D9E00F1AE38 /* TimerViewModel.swift */; };
 		67351A71265696EC00F1AE38 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A70265696EC00F1AE38 /* TimerManager.swift */; };
 		67351A732656A89300F1AE38 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A722656A89300F1AE38 /* TimerView.swift */; };
-		673BB7582664E31E007495D0 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB7562664E31E007495D0 /* Task+CoreDataClass.swift */; };
-		673BB7592664E31E007495D0 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB7572664E31E007495D0 /* Task+CoreDataProperties.swift */; };
-		673BB75B2664E74E007495D0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB75A2664E74E007495D0 /* CoreDataManager.swift */; };
+		673BB75B2664E74E007495D0 /* TaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BB75A2664E74E007495D0 /* TaskDataManager.swift */; };
+		67729B6F267752C600EB4AEB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67729B6E267752C600EB4AEB /* Task.swift */; };
+		67729B71267752D900EB4AEB /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67729B70267752D900EB4AEB /* RealmService.swift */; };
 		67857DB5266A22BC00D67D4B /* TimerManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67857DB4266A22BC00D67D4B /* TimerManagerTest.swift */; };
 		67ACB8BF265D083200283FFB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8BE265D083200283FFB /* AppCoordinator.swift */; };
 		67ACB8C1265D0A6500283FFB /* TimerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */; };
@@ -36,7 +35,6 @@
 		67B318D826611E770099D215 /* NewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318D726611E770099D215 /* NewTaskViewModel.swift */; };
 		67B318DA26612DA40099D215 /* NewTaskTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318D926612DA40099D215 /* NewTaskTextFieldCell.swift */; };
 		67B318DC26614B6F0099D215 /* NewTaskTimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B318DB26614B6E0099D215 /* NewTaskTimePickerCell.swift */; };
-		67C403432664D1FD005C1867 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C403422664D1FD005C1867 /* CoreDataService.swift */; };
 		67DEDA85267360BB00575FC7 /* TimerCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEDA84267360BB00575FC7 /* TimerCoordinatorTest.swift */; };
 		67DEDA8726736A8A00575FC7 /* TaskListCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEDA8626736A8A00575FC7 /* TaskListCoordinatorTest.swift */; };
 		67DEDA8A26736FA900575FC7 /* MockChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEDA8926736FA900575FC7 /* MockChildCoordinator.swift */; };
@@ -66,7 +64,6 @@
 		67351A3C265679E400F1AE38 /* pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67351A3F265679E400F1AE38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67351A41265679E400F1AE38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		67351A49265679E400F1AE38 /* pomodoro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pomodoro.xcdatamodel; sourceTree = "<group>"; };
 		67351A4B265679F700F1AE38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67351A4E265679F700F1AE38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67351A50265679F700F1AE38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,9 +76,9 @@
 		67351A6E26568D9E00F1AE38 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		67351A70265696EC00F1AE38 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		67351A722656A89300F1AE38 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		673BB7562664E31E007495D0 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		673BB7572664E31E007495D0 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		673BB75A2664E74E007495D0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		673BB75A2664E74E007495D0 /* TaskDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataManager.swift; sourceTree = "<group>"; };
+		67729B6E267752C600EB4AEB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		67729B70267752D900EB4AEB /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		67857DB4266A22BC00D67D4B /* TimerManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerTest.swift; sourceTree = "<group>"; };
 		67ACB8BE265D083200283FFB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCoordinator.swift; sourceTree = "<group>"; };
@@ -93,7 +90,6 @@
 		67B318D726611E770099D215 /* NewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewModel.swift; sourceTree = "<group>"; };
 		67B318D926612DA40099D215 /* NewTaskTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTextFieldCell.swift; sourceTree = "<group>"; };
 		67B318DB26614B6E0099D215 /* NewTaskTimePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTimePickerCell.swift; sourceTree = "<group>"; };
-		67C403422664D1FD005C1867 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		67DEDA84267360BB00575FC7 /* TimerCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCoordinatorTest.swift; sourceTree = "<group>"; };
 		67DEDA8626736A8A00575FC7 /* TaskListCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCoordinatorTest.swift; sourceTree = "<group>"; };
 		67DEDA8926736FA900575FC7 /* MockChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChildCoordinator.swift; sourceTree = "<group>"; };
@@ -185,7 +181,6 @@
 				67351A682656813E00F1AE38 /* Data */,
 				67351A4B265679F700F1AE38 /* Assets.xcassets */,
 				67351A4D265679F700F1AE38 /* LaunchScreen.storyboard */,
-				67351A48265679E400F1AE38 /* pomodoro.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -231,10 +226,9 @@
 		67ACB8C2265D0C5500283FFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				673BB7562664E31E007495D0 /* Task+CoreDataClass.swift */,
-				673BB7572664E31E007495D0 /* Task+CoreDataProperties.swift */,
 				6730DE8E2663B6AA00A6B989 /* NewTaskSectionModel.swift */,
 				6730DE902663B72100A6B989 /* TaskListSectionModel.swift */,
+				67729B6E267752C600EB4AEB /* Task.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,8 +264,8 @@
 		67C403412664CFB0005C1867 /* DataService */ = {
 			isa = PBXGroup;
 			children = (
-				67C403422664D1FD005C1867 /* CoreDataService.swift */,
-				673BB75A2664E74E007495D0 /* CoreDataManager.swift */,
+				673BB75A2664E74E007495D0 /* TaskDataManager.swift */,
+				67729B70267752D900EB4AEB /* RealmService.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -530,26 +524,24 @@
 				67351A732656A89300F1AE38 /* TimerView.swift in Sources */,
 				67B318DA26612DA40099D215 /* NewTaskTextFieldCell.swift in Sources */,
 				67ACB8C7265D13AB00283FFB /* TaskListCoordinator.swift in Sources */,
+				67729B6F267752C600EB4AEB /* Task.swift in Sources */,
 				6730DE8F2663B6AA00A6B989 /* NewTaskSectionModel.swift in Sources */,
-				67C403432664D1FD005C1867 /* CoreDataService.swift in Sources */,
+				67729B71267752D900EB4AEB /* RealmService.swift in Sources */,
 				67351A6F26568D9E00F1AE38 /* TimerViewModel.swift in Sources */,
 				67B318D326611CAD0099D215 /* NewTaskController.swift in Sources */,
 				67ACB8C5265D0CC000283FFB /* TaskListController.swift in Sources */,
 				67ACB8C1265D0A6500283FFB /* TimerCoordinator.swift in Sources */,
-				673BB75B2664E74E007495D0 /* CoreDataManager.swift in Sources */,
+				673BB75B2664E74E007495D0 /* TaskDataManager.swift in Sources */,
 				67ACB8BF265D083200283FFB /* AppCoordinator.swift in Sources */,
-				673BB7582664E31E007495D0 /* Task+CoreDataClass.swift in Sources */,
 				67B318D626611E0D0099D215 /* NewTaskCoordinator.swift in Sources */,
 				67B318D826611E770099D215 /* NewTaskViewModel.swift in Sources */,
 				6730DE912663B72100A6B989 /* TaskListSectionModel.swift in Sources */,
 				67351A71265696EC00F1AE38 /* TimerManager.swift in Sources */,
 				67ACB8C9265D143700283FFB /* TaskListViewModel.swift in Sources */,
-				67351A4A265679E400F1AE38 /* pomodoro.xcdatamodeld in Sources */,
 				67351A6D2656833A00F1AE38 /* UIView Extensions.swift in Sources */,
 				67351A6A2656814E00F1AE38 /* Color.swift in Sources */,
 				67351A6726567E5800F1AE38 /* TimerController.swift in Sources */,
 				67351A40265679E400F1AE38 /* AppDelegate.swift in Sources */,
-				673BB7592664E31E007495D0 /* Task+CoreDataProperties.swift in Sources */,
 				67351A42265679E400F1AE38 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -822,19 +814,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		67351A48265679E400F1AE38 /* pomodoro.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				67351A49265679E400F1AE38 /* pomodoro.xcdatamodel */,
-			);
-			currentVersion = 67351A49265679E400F1AE38 /* pomodoro.xcdatamodel */;
-			path = pomodoro.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 67351A34265679E300F1AE38 /* Project object */;
 }
