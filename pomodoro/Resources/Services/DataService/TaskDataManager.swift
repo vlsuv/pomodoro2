@@ -17,6 +17,8 @@ protocol TaskDataManagerType {
     func addTask(name: String, description: String?, workInterval: Int) -> Completable
     func deleteTask(atIndex index: Int) -> Completable
     func movedTask(sourceIndex: Int, destinationIndex: Int) -> Completable
+    func getTask(atIndex index: Int) -> Task
+    func changeExistTask(handler: @escaping () -> ()) -> Completable
 }
 
 class TaskDataManager: TaskDataManagerType {
@@ -62,5 +64,13 @@ extension TaskDataManager {
             swap(&self.tasks[sourceIndex].order, &self.tasks[destinationIndex].order)
         }
         return realmService.writeChange(handler: movedHandler)
+    }
+    
+    func getTask(atIndex index: Int) -> Task {
+        return tasks[index]
+    }
+    
+    func changeExistTask(handler: @escaping () -> ()) -> Completable {
+        return realmService.writeChange(handler: handler)
     }
 }

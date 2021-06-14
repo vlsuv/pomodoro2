@@ -49,15 +49,26 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
     
     var isValid: BehaviorSubject<Bool>
     
+    let type: NewTaskPageType
+    
     // MARK: - Init
-    init() {
-        disposeBag = DisposeBag()
+    init(type: NewTaskPageType) {
+        self.disposeBag = DisposeBag()
         
-        taskName = .init(value: "")
-        taskDescription = .init(value: "")
-        workInterval = .init(value: 25)
+        self.type = type
         
-        isValid = .init(value: false)
+        switch type {
+        case .newTask:
+            taskName = .init(value: "")
+            taskDescription = .init(value: "")
+            workInterval = .init(value: 25)
+            isValid = .init(value: false)
+        case .editTask(task: let task):
+            taskName = .init(value: task.name)
+            taskDescription = .init(value: task.taskDescription ?? "")
+            workInterval = .init(value: task.workInterval)
+            isValid = .init(value: false)
+        }
         
         setupSections()
         setupBindings()
@@ -93,6 +104,15 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
     }
     
     func didTapDoneButton() {
+        switch type {
+        case .newTask:
+            addNewTask()
+        case .editTask(task: let task):
+            saveExistTask(task)
+        }
+    }
+    
+    private func addNewTask() {
         guard let name = try? taskName.value(), let description = try? taskDescription.value(), let workInterval = try? workInterval.value() else { return }
         
         taskDataManager
@@ -104,6 +124,26 @@ class NewTaskViewModel: NewTaskViewModelType, NewTaskViewModelInputs, NewTaskVie
                     self?.coordinator?.didFinishCreatingTask()
                 }
         }.disposed(by: disposeBag)
+        
+    }
+    
+    private func saveExistTask(_ task: Task) {
+        guard let name = try? taskName.value(), let description = try? taskDescription.value(), let workInterval = try? workInterval.value() else { return }
+        
+        taskDataManager.changeExistTask {
+            task.name = name
+            task.taskDescription = description
+            task.workInterval = workInterval
+        }.subscribe { [weak self] completable in
+            switch completable {
+            case .error(let error):
+                print(error)
+            case .completed:
+                print("Task changed")
+                self?.coordinator?.didFinishCreatingTask()
+            }
+        }
+        .disposed(by: disposeBag)
     }
     
     func didTapCancelButton() {

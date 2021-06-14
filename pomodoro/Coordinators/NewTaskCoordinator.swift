@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum NewTaskPageType {
+    case newTask
+    case editTask(task: Task)
+}
+
 class NewTaskCoordinator: Coordinator {
     
     // MARK: - Properties
@@ -19,9 +24,12 @@ class NewTaskCoordinator: Coordinator {
     
     var parentCoordinator: Coordinator?
     
+    var type: NewTaskPageType
+    
     // MARK: - Init
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, type: NewTaskPageType) {
         self.navigationController = navigationController
+        self.type = type
     }
     
     deinit {
@@ -29,7 +37,7 @@ class NewTaskCoordinator: Coordinator {
     }
     
     func start() {
-        let newTaskViewModel = NewTaskViewModel()
+        let newTaskViewModel = NewTaskViewModel(type: type)
         newTaskViewModel.coordinator = self
         
         let newTaskController = NewTaskController()

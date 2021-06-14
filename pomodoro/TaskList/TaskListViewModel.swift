@@ -19,6 +19,7 @@ protocol TaskListViewModelInputs {
     func didTapAddTaskButton()
     func didTapDeleteTaskButton(atIndexPath indexPath: IndexPath)
     func didMovedTask(sourceIndex: IndexPath, destinationIndex: IndexPath)
+    func didEditTask(atIndexPath indexPath: IndexPath)
 }
 
 protocol TaskListViewModelOutputs {
@@ -88,6 +89,11 @@ class TaskListViewModel: TaskListViewModelType, TaskListViewModelInputs, TaskLis
             }
         }
         .disposed(by: disposeBag)
+    }
+    
+    func didEditTask(atIndexPath indexPath: IndexPath) {
+        let task = taskManager.getTask(atIndex: indexPath.row)
+        coordinator?.showEditTask(task)
     }
 }
 

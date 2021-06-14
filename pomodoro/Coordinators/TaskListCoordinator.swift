@@ -48,7 +48,16 @@ class TaskListCoordinator: Coordinator {
     }
     
     func showNewTask() {
-        let newTaskCoordinator = NewTaskCoordinator(navigationController: navigationController)
+        let newTaskCoordinator = NewTaskCoordinator(navigationController: navigationController, type: .newTask)
+        
+        newTaskCoordinator.parentCoordinator = self
+        childCoordinators.append(newTaskCoordinator)
+        
+        newTaskCoordinator.start()
+    }
+    
+    func showEditTask(_ task: Task) {
+        let newTaskCoordinator = NewTaskCoordinator(navigationController: navigationController, type: .editTask(task: task))
         
         newTaskCoordinator.parentCoordinator = self
         childCoordinators.append(newTaskCoordinator)

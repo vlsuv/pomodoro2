@@ -70,11 +70,6 @@ class TaskListController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        tableView.rx.modelDeleted(Task.self)
-            .subscribe { model in
-                
-        }.disposed(by: disposeBag)
-        
         tableView.rx.itemMoved
             .asObservable()
             .subscribe(onNext: { [weak self] sourceIndex, destinationIndex in
@@ -111,5 +106,15 @@ class TaskListController: UIViewController {
 extension TaskListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] action, view, succes in
+            self?.viewModel.inputs.didEditTask(atIndexPath: indexPath)
+            succes(true)
+        }
+        editAction.backgroundColor = UIColor.gray
+        
+        return UISwipeActionsConfiguration(actions: [editAction])
     }
 }
