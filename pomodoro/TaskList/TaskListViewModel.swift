@@ -20,6 +20,7 @@ protocol TaskListViewModelInputs {
     func didTapDeleteTaskButton(atIndexPath indexPath: IndexPath)
     func didMovedTask(sourceIndex: IndexPath, destinationIndex: IndexPath)
     func didEditTask(atIndexPath indexPath: IndexPath)
+    func didSelectTask(atIndexPath indexPath: IndexPath)
 }
 
 protocol TaskListViewModelOutputs {
@@ -94,6 +95,11 @@ class TaskListViewModel: TaskListViewModelType, TaskListViewModelInputs, TaskLis
     func didEditTask(atIndexPath indexPath: IndexPath) {
         let task = taskManager.getTask(atIndex: indexPath.row)
         coordinator?.showEditTask(task)
+    }
+    
+    func didSelectTask(atIndexPath indexPath: IndexPath) {
+        let task = taskManager.getTask(atIndex: indexPath.row)
+        NotificationCenter.default.post(name: .DidSelectTask, object: task)
     }
 }
 

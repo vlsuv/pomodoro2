@@ -77,6 +77,14 @@ class TaskListController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        tableView.rx.itemSelected
+            .asObservable()
+            .subscribe (onNext: { [weak self] indexPath in
+                self?.tableView.deselectRow(at: indexPath, animated: true)
+                
+                self?.viewModel.inputs.didSelectTask(atIndexPath: indexPath)
+            }).disposed(by: disposeBag)
+        
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
     }

@@ -19,6 +19,7 @@ protocol TimerViewModelInputs {
 protocol TimerViewModelOutputs {
     var currentTime: BehaviorRelay<String> { get }
     var timerState: BehaviorRelay<TimerState> { get }
+    var task: BehaviorRelay<Task?> { get }
 }
 
 protocol TimerViewModelType {
@@ -41,8 +42,21 @@ class TimerViewModel: TimerViewModelType, TimerViewModelInputs, TimerViewModelOu
     
     var coordinator: TimerCoordinator?
     
+    var task: BehaviorRelay<Task?> = .init(value: nil)
+    
     init() {
         setupTimerManager()
+        
+        NotificationCenter.default.rx.notification(.DidSelectTask)
+            .compactMap { $0.object as? Task }
+            .bind(to: task)
+            .disposed(by: disposeBag)
+        
+        task.compactMap { $0 }
+            .subscribe (onNext: { [weak self] task in
+                self?.updateTimer(with: task)
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Handlers
@@ -67,6 +81,10 @@ class TimerViewModel: TimerViewModelType, TimerViewModelInputs, TimerViewModelOu
 
 // MARK: - TimerManagerDelegate
 extension TimerViewModel: TimerManagerDelegate {
+    func updateTimer(with task: Task) {
+        timerManager.updateTimer(time: task.workIntervalSec())
+    }
+    
     func didChangeTimerState(to state: TimerState) {
         timerState.accept(state)
     }

@@ -17,6 +17,7 @@ protocol TimerManagerProtocol {
     var delegate: TimerManagerDelegate? { get set }
     func changeState()
     func stopTimer()
+    func updateTimer(time: Double)
 }
 
 enum TimerState {
@@ -29,6 +30,8 @@ class TimerManager: TimerManagerProtocol {
     
     // MARK: - Properties
     var delegate: TimerManagerDelegate?
+    
+    var settedTime: Double?
     
     var timer: Timer?
     var endDate: Date?
@@ -58,7 +61,7 @@ class TimerManager: TimerManagerProtocol {
     
     func stopTimer() {
         timer?.invalidate()
-        secondsLeft = 100
+        secondsLeft = settedTime ?? 100
         timer = nil
         endDate = nil
         
@@ -85,5 +88,10 @@ class TimerManager: TimerManagerProtocol {
         if secondsLeft == 0 {
             stopTimer()
         }
+    }
+    
+    func updateTimer(time: Double) {
+        settedTime = time
+        secondsLeft = settedTime!
     }
 }

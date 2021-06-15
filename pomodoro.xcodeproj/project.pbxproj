@@ -25,6 +25,7 @@
 		67729B6F267752C600EB4AEB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67729B6E267752C600EB4AEB /* Task.swift */; };
 		67729B71267752D900EB4AEB /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67729B70267752D900EB4AEB /* RealmService.swift */; };
 		67857DB5266A22BC00D67D4B /* TimerManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67857DB4266A22BC00D67D4B /* TimerManagerTest.swift */; };
+		67864F732677A8C700C900A1 /* Notification Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67864F722677A8C700C900A1 /* Notification Extensions.swift */; };
 		67ACB8BF265D083200283FFB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8BE265D083200283FFB /* AppCoordinator.swift */; };
 		67ACB8C1265D0A6500283FFB /* TimerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */; };
 		67ACB8C5265D0CC000283FFB /* TaskListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ACB8C4265D0CC000283FFB /* TaskListController.swift */; };
@@ -80,6 +81,7 @@
 		67729B6E267752C600EB4AEB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		67729B70267752D900EB4AEB /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		67857DB4266A22BC00D67D4B /* TimerManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerTest.swift; sourceTree = "<group>"; };
+		67864F722677A8C700C900A1 /* Notification Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification Extensions.swift"; sourceTree = "<group>"; };
 		67ACB8BE265D083200283FFB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		67ACB8C0265D0A6500283FFB /* TimerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCoordinator.swift; sourceTree = "<group>"; };
 		67ACB8C4265D0CC000283FFB /* TaskListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				67351A6C2656833A00F1AE38 /* UIView Extensions.swift */,
+				67864F722677A8C700C900A1 /* Notification Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				67351A6726567E5800F1AE38 /* TimerController.swift in Sources */,
 				67351A40265679E400F1AE38 /* AppDelegate.swift in Sources */,
 				67351A42265679E400F1AE38 /* SceneDelegate.swift in Sources */,
+				67864F732677A8C700C900A1 /* Notification Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

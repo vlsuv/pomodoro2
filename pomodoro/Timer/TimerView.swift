@@ -11,6 +11,15 @@ import UIKit
 class TimerView: UIView {
     
     // MARK: - Properties
+    var taskNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = Color.black
+        label.textAlignment = .center
+        label.backgroundColor = Color.lightGray
+        return label
+    }()
+    
     var timeLabel: UILabel = {
         let label = UILabel()
         label.text = "00:00"
@@ -55,6 +64,10 @@ class TimerView: UIView {
     
     // MARK: - Handlers
     private func setupConstraints() {
+        taskNameLabel.anchor(top: safeAreaLayoutGuide.topAnchor,
+                             left: leftAnchor,
+                             right: rightAnchor)
+        
         timeLabel.anchor(centerX: centerXAnchor,
                          centerY: centerYAnchor)
         
@@ -74,7 +87,7 @@ class TimerView: UIView {
     }
     
     private func addSubviews() {
-        [timeLabel, timerButton, stopTimerButton]
+        [taskNameLabel, timeLabel, timerButton, stopTimerButton]
             .forEach { addSubview($0) }
     }
 }

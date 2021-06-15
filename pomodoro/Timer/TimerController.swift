@@ -81,5 +81,12 @@ class TimerController: UIViewController {
                 self?.contentView.timeLabel.text = time
             })
             .disposed(by: disposeBag)
+        
+        viewModel?.outputs.task
+            .asDriver()
+            .drive(onNext: { [weak self] task in
+                self?.contentView.taskNameLabel.text = task?.name
+            })
+            .disposed(by: disposeBag)
     }
 }

@@ -32,6 +32,12 @@ class Task: Object {
     }
 }
 
+extension Task {
+    func workIntervalSec() -> Double {
+        return Double(self.workInterval * 60)
+    }
+}
+
 extension Task: IdentifiableType {
     public typealias Identity = String
     
