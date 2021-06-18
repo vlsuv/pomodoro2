@@ -10,6 +10,7 @@ target 'pomodoro' do
   pod 'RxCocoa'
   pod 'RxDataSources'
   pod "RxRealm"
+  pod "RxRealmDataSources"
 
   target 'pomodoroTests' do
     inherit! :search_paths

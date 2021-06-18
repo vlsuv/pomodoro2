@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04E44B20486B023F899ACDEA /* Pods_pomodoroTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE9E95F8AF354E58B3E6783 /* Pods_pomodoroTests.framework */; };
+		671FE90E2678936E00ACE738 /* UITableView Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671FE90D2678936E00ACE738 /* UITableView Extensions.swift */; };
 		6730DE8F2663B6AA00A6B989 /* NewTaskSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6730DE8E2663B6AA00A6B989 /* NewTaskSectionModel.swift */; };
 		6730DE912663B72100A6B989 /* TaskListSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6730DE902663B72100A6B989 /* TaskListSectionModel.swift */; };
 		67351A40265679E400F1AE38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67351A3F265679E400F1AE38 /* AppDelegate.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		2DE9E95F8AF354E58B3E6783 /* Pods_pomodoroTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pomodoroTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		380D16A6B77014943A41E445 /* Pods-pomodoro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pomodoro.release.xcconfig"; path = "Target Support Files/Pods-pomodoro/Pods-pomodoro.release.xcconfig"; sourceTree = "<group>"; };
+		671FE90D2678936E00ACE738 /* UITableView Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView Extensions.swift"; sourceTree = "<group>"; };
 		6730DE8E2663B6AA00A6B989 /* NewTaskSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskSectionModel.swift; sourceTree = "<group>"; };
 		6730DE902663B72100A6B989 /* TaskListSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListSectionModel.swift; sourceTree = "<group>"; };
 		67351A3C265679E400F1AE38 /* pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +213,7 @@
 			children = (
 				67351A6C2656833A00F1AE38 /* UIView Extensions.swift */,
 				67864F722677A8C700C900A1 /* Notification Extensions.swift */,
+				671FE90D2678936E00ACE738 /* UITableView Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				67ACB8C7265D13AB00283FFB /* TaskListCoordinator.swift in Sources */,
 				67729B6F267752C600EB4AEB /* Task.swift in Sources */,
 				6730DE8F2663B6AA00A6B989 /* NewTaskSectionModel.swift in Sources */,
+				671FE90E2678936E00ACE738 /* UITableView Extensions.swift in Sources */,
 				67729B71267752D900EB4AEB /* RealmService.swift in Sources */,
 				67351A6F26568D9E00F1AE38 /* TimerViewModel.swift in Sources */,
 				67B318D326611CAD0099D215 /* NewTaskController.swift in Sources */,

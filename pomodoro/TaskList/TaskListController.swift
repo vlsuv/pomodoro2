@@ -7,20 +7,21 @@
 //
 
 import UIKit
+
 import RxSwift
 import RxCocoa
-import RxDataSources
+import RxRealmDataSources
+import RxRealm
 
 class TaskListController: UIViewController {
-    
     // MARK: - Properties
     var viewModel: TaskListViewModelType!
     
     private var tableView: UITableView = UITableView()
     
-    var dataSource: RxTableViewSectionedAnimatedDataSource<TaskListSection>!
+    private var dataSource: RxTableViewRealmDataSource<Task>!
     
-    var addTaskButton: UIBarButtonItem = {
+    private var addTaskButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "Add", style: .plain, target: nil, action: nil)
         return button
     }()
@@ -37,11 +38,10 @@ class TaskListController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Color.white
         
-        dataSource = viewModel.outputs.dataSource()
-        
         configureNavigationController()
         configureTableView()
-        setupBindings()
+        setupTableViewControlEvents()
+        setupButtonControlEvents()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,12 +57,30 @@ class TaskListController: UIViewController {
     private func configureNavigationController() {
         navigationItem.rightBarButtonItems = [editButton, addTaskButton]
     }
-    
+}
+
+// MARK: TableViewConfiguration
+extension TaskListController {
     private func configureTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
+        dataSource = RxTableViewRealmDataSource(cellIdentifier: "cell", cellType: UITableViewCell.self) { cell, ip, task in
+            cell.textLabel?.text = task.name
+        }
+        
+        viewModel.outputs.tasks
+            .bind(to: tableView.rx.realmChanges(dataSource))
+            .disposed(by: disposeBag)
+        
+        view.addSubview(tableView)
+        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+        
+        tableView.tableFooterView = UITableView()
+    }
+    
+    private func setupTableViewControlEvents() {
         tableView.rx.itemDeleted
             .asObservable()
             .subscribe(onNext: { [weak self] indexPath in
@@ -84,17 +102,9 @@ class TaskListController: UIViewController {
                 
                 self?.viewModel.inputs.didSelectTask(atIndexPath: indexPath)
             }).disposed(by: disposeBag)
-        
-        view.addSubview(tableView)
-        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
     }
     
-    private func setupBindings() {
-        viewModel?.outputs.sections
-            .asDriver()
-            .drive(tableView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-            
+    private func setupButtonControlEvents() {
         editButton.rx.tap
             .asObservable().subscribe(onNext: { [weak self] in
                 self?.tableView.isEditing.toggle()
@@ -112,10 +122,6 @@ class TaskListController: UIViewController {
 
 // MARK: - UITableViewDelegate
 extension TaskListController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-    }
-    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] action, view, succes in
             self?.viewModel.inputs.didEditTask(atIndexPath: indexPath)
@@ -124,5 +130,13 @@ extension TaskListController: UITableViewDelegate {
         editAction.backgroundColor = UIColor.gray
         
         return UISwipeActionsConfiguration(actions: [editAction])
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
     }
 }

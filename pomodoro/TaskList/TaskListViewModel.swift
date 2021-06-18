@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import RxSwift
+
 import RxCocoa
-import RxDataSources
-import RxRealm
+import RxSwift
 import RealmSwift
+import RxRealm
+import RxRealmDataSources
 
 
 protocol TaskListViewModelInputs {
@@ -24,8 +25,7 @@ protocol TaskListViewModelInputs {
 }
 
 protocol TaskListViewModelOutputs {
-    var sections: BehaviorRelay<[TaskListSection]> { get }
-    func dataSource() -> RxTableViewSectionedAnimatedDataSource<TaskListSection> 
+    var tasks: Observable<(AnyRealmCollection<Results<Task>.ElementType>, RealmChangeset?)> { get }
 }
 
 protocol TaskListViewModelType: class {
@@ -43,16 +43,16 @@ class TaskListViewModel: TaskListViewModelType, TaskListViewModelInputs, TaskLis
     private var taskManager: TaskDataManagerType {
         return TaskDataManager.shared
     }
-
-    private let disposeBag: DisposeBag
     
-    var sections: BehaviorRelay<[TaskListSection]> = .init(value: [TaskListSection]())
+    var tasks: Observable<(AnyRealmCollection<Results<Task>.ElementType>, RealmChangeset?)> {
+        return TaskDataManager.shared.changeSetTasks()
+    }
+    
+    private let disposeBag: DisposeBag
     
     // MARK: - Init
     init() {
         disposeBag = DisposeBag()
-        
-        taskManager.fetchObserveTasks().map { [TaskListSection(header: "", items: $0)] }.bind(to: sections).disposed(by: disposeBag)
     }
     
     deinit {
@@ -100,34 +100,5 @@ class TaskListViewModel: TaskListViewModelType, TaskListViewModelInputs, TaskLis
     func didSelectTask(atIndexPath indexPath: IndexPath) {
         let task = taskManager.getTask(atIndex: indexPath.row)
         NotificationCenter.default.post(name: .DidSelectTask, object: task)
-    }
-}
-
-// MARK: - RxDataSource
-extension TaskListViewModel {
-    func dataSource() -> RxTableViewSectionedAnimatedDataSource<TaskListSection> {
-        let dataSource = RxTableViewSectionedAnimatedDataSource<TaskListSection> (configureCell: { dataSource, tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = item.name
-            return cell
-        })
-        
-        dataSource.titleForHeaderInSection = { dataSource, indexPath in
-            return dataSource.sectionModels[indexPath].header
-        }
-        
-        dataSource.canEditRowAtIndexPath = { _, _ in
-            return true
-        }
-        
-        dataSource.canMoveRowAtIndexPath = { _, _ in
-            return true
-        }
-        
-        dataSource.titleForFooterInSection = { _, _ in
-            return " "
-        }
-        
-        return dataSource
     }
 }

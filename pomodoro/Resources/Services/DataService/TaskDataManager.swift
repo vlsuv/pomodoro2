@@ -7,13 +7,15 @@
 //
 
 import Foundation
+
 import RxSwift
 import RxCocoa
 import RealmSwift
 import RxRealm
 
 protocol TaskDataManagerType {
-    func fetchObserveTasks() -> Observable<Array<Task>>
+    func changeSetTasks() -> Observable<(AnyRealmCollection<Results<Task>.ElementType>, RealmChangeset?)>
+    
     func addTask(name: String, description: String?, workInterval: Int) -> Completable
     func deleteTask(atIndex index: Int) -> Completable
     func movedTask(sourceIndex: Int, destinationIndex: Int) -> Completable
@@ -35,17 +37,22 @@ class TaskDataManager: TaskDataManagerType {
     // MARK: - Init
     private init() {
         self.disposeBag = DisposeBag()
+        
         self.realmService = RealmService()
         
         tasks = realmService.fetchData(Task.self).sorted(byKeyPath: "order", ascending: true)
     }
 }
 
+// MARK: - Task Observables
 extension TaskDataManager {
-    func fetchObserveTasks() -> Observable<Array<Task>> {
-        return Observable.array(from: tasks)
+    func changeSetTasks() -> Observable<(AnyRealmCollection<Results<Task>.ElementType>, RealmChangeset?)> {
+        return Observable.changeset(from: tasks).share()
     }
-    
+}
+
+// Task Manage
+extension TaskDataManager {
     func addTask(name: String, description: String?, workInterval: Int) -> Completable {
         let order = (tasks.last?.order ?? 0) + 1
         let task = Task(name: name, description: description, workInterval: workInterval, order: order)
